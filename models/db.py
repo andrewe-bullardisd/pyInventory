@@ -42,7 +42,7 @@ Field("Campus", "string", requires=IS_EMPTY_OR(IS_IN_SET(campuses)), notnull=Tru
 Field("Room", "string", notnull=True),\
 Field("Notes", "text", notnull=True),\
 Field("Warranty_Type", "string", requires=IS_EMPTY_OR(IS_IN_SET(warrantyTypes,zero="Not Set/Unknown")), notnull=True),\
-Field("Warranty_Expiration", "date", notnull=True),\
+Field("Warranty_Expiration", "date", requires=IS_EMPTY_OR(IS_DATE()), notnull=True),\
 Field("Flags", "text", writable=False, notnull=True, represent=lambda val, row: [v.strip() for v in val.strip().split(",")])\
 )
 
